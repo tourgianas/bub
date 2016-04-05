@@ -2,10 +2,10 @@
 -- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 05, 2016 at 06:24 PM
--- Server version: 10.1.10-MariaDB
--- PHP Version: 5.6.19
+-- Φιλοξενητής: 127.0.0.1
+-- Χρόνος δημιουργίας: 05 Απρ 2016 στις 21:54:24
+-- Έκδοση διακομιστή: 10.1.10-MariaDB
+-- Έκδοση PHP: 5.6.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `b4_u_buy`
+-- Βάση δεδομένων: `b4_u_buy`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `home_page`
+-- Δομή πίνακα για τον πίνακα `home_page`
 --
 
 CREATE TABLE `home_page` (
@@ -36,7 +36,7 @@ CREATE TABLE `home_page` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `login`
+-- Δομή πίνακα για τον πίνακα `login`
 --
 
 CREATE TABLE `login` (
@@ -47,7 +47,7 @@ CREATE TABLE `login` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `login`
+-- Άδειασμα δεδομένων του πίνακα `login`
 --
 
 INSERT INTO `login` (`id`, `email`, `password`, `role`) VALUES
@@ -57,16 +57,16 @@ INSERT INTO `login` (`id`, `email`, `password`, `role`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mobile`
+-- Δομή πίνακα για τον πίνακα `mobile`
 --
 
 CREATE TABLE `mobile` (
   `ID` int(10) UNSIGNED NOT NULL,
   `Name` varchar(255) NOT NULL,
-  `Screen Size` varchar(255) NOT NULL,
+  `Screen_Size` varchar(255) NOT NULL,
   `Processor` varchar(255) NOT NULL,
-  `Internal Memory` int(11) NOT NULL,
-  `Card Slot` int(11) NOT NULL,
+  `Internal_Memory` int(11) NOT NULL,
+  `Card_Slot` int(11) NOT NULL,
   `Ram` int(11) NOT NULL,
   `Camera` int(11) NOT NULL,
   `OS` varchar(255) NOT NULL,
@@ -77,43 +77,45 @@ CREATE TABLE `mobile` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Mobile phone table with specs';
 
 --
--- Dumping data for table `mobile`
+-- Άδειασμα δεδομένων του πίνακα `mobile`
 --
 
-INSERT INTO `mobile` (`ID`, `Name`, `Screen Size`, `Processor`, `Internal Memory`, `Card Slot`, `Ram`, `Camera`, `OS`, `Battery`, `Manufacturer`, `Resolution`, `Photo`) VALUES
+INSERT INTO `mobile` (`ID`, `Name`, `Screen_Size`, `Processor`, `Internal_Memory`, `Card_Slot`, `Ram`, `Camera`, `OS`, `Battery`, `Manufacturer`, `Resolution`, `Photo`) VALUES
 (1, 'Galaxy S4', '5.0', 'Quad-core 1.9 GHz Krait 300', 16, 1, 2, 15, 'Android OS, v4.2.2 (Jelly Bean)', '2600 mAh', 'Samsung', '1080 x 1920', '/images/Mobile/1.jpeg'),
-(2, 'iPhone 5S', '4.0', 'Dual-core 1.3 GHz Cyclone (ARM v8-based)', 16, 0, 1, 8, 'iOS 7', '1560 mAh', 'Apple', '640 x 1136 pixels', '/images/Mobile/2.jpeg');
+(2, 'iPhone 5S', '4.0', 'Dual-core 1.3 GHz Cyclone (ARM v8-based)', 16, 0, 1, 8, 'iOS 7', '1560 mAh', 'Apple', '640 x 1136', '/images/Mobile/2.jpeg'),
+(3, 'Nokia Lumia 520', '4.0', 'Dual-core 1.0 GHz', 8, 1, 512, 5, 'Microsoft Windows Phone 8', '1430 mAh', 'Nokia', '480 x 800', '/images/Mobile/3.jpg'),
+(4, 'LG G5', '5.3', 'Dual-core 2.15 GHz Kryo ', 32, 1, 4000, 16, 'Android OS, v6.0.1 (Marshmallow)', '2800 mAh ', 'LG', '1440 x 2560', '/images/Mobile/4.jpg');
 
 --
--- Indexes for dumped tables
+-- Ευρετήρια για άχρηστους πίνακες
 --
 
 --
--- Indexes for table `login`
+-- Ευρετήρια για πίνακα `login`
 --
 ALTER TABLE `login`
   ADD UNIQUE KEY `id` (`id`);
 
 --
--- Indexes for table `mobile`
+-- Ευρετήρια για πίνακα `mobile`
 --
 ALTER TABLE `mobile`
   ADD PRIMARY KEY (`ID`,`Name`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT για άχρηστους πίνακες
 --
 
 --
--- AUTO_INCREMENT for table `login`
+-- AUTO_INCREMENT για πίνακα `login`
 --
 ALTER TABLE `login`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT for table `mobile`
+-- AUTO_INCREMENT για πίνακα `mobile`
 --
 ALTER TABLE `mobile`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

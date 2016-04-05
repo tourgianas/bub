@@ -59,6 +59,31 @@
             $this->load->view('footer');
         }
 
+		// When user submit data on view page, Then this function store data in array.
+		public function data_edited($page = 'data_edited') {
+			$data['page_title'] = "Before You Buy";
+
+            $this->load->view('header', $data);
+
+			$data = array(
+			'ch_cat_id' => $this->input->post('cat_id')
+			);
+
+			// Show submitted data on view page again.
+			$this->load->view("mobile", $data);
+
+            $this->load->view('footer');
+		}
+
+        public function mobile($page = 'mobile')
+        {
+            $data['page_title'] = "Before You Buy";
+
+            $this->load->view('header', $data);
+            $this->load->view('mobile', $data);
+            $this->load->view('footer');
+        }
+
 
         public function logout($page = 'logout')
         {
