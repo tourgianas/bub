@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 05, 2016 at 05:42 PM
+-- Generation Time: Apr 05, 2016 at 06:24 PM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.6.19
 
@@ -70,10 +70,19 @@ CREATE TABLE `mobile` (
   `Ram` int(11) NOT NULL,
   `Camera` int(11) NOT NULL,
   `OS` varchar(255) NOT NULL,
-  `Battery` int(11) NOT NULL,
-  `Manufacturer` int(11) NOT NULL,
-  `Resolution` varchar(255) NOT NULL
+  `Battery` varchar(255) NOT NULL,
+  `Manufacturer` varchar(250) NOT NULL,
+  `Resolution` varchar(255) NOT NULL,
+  `Photo` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Mobile phone table with specs';
+
+--
+-- Dumping data for table `mobile`
+--
+
+INSERT INTO `mobile` (`ID`, `Name`, `Screen Size`, `Processor`, `Internal Memory`, `Card Slot`, `Ram`, `Camera`, `OS`, `Battery`, `Manufacturer`, `Resolution`, `Photo`) VALUES
+(1, 'Galaxy S4', '5.0', 'Quad-core 1.9 GHz Krait 300', 16, 1, 2, 15, 'Android OS, v4.2.2 (Jelly Bean)', '2600 mAh', 'Samsung', '1080 x 1920', '/images/Mobile/1.jpeg'),
+(2, 'iPhone 5S', '4.0', 'Dual-core 1.3 GHz Cyclone (ARM v8-based)', 16, 0, 1, 8, 'iOS 7', '1560 mAh', 'Apple', '640 x 1136 pixels', '/images/Mobile/2.jpeg');
 
 --
 -- Indexes for dumped tables
@@ -104,7 +113,7 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `mobile`
 --
 ALTER TABLE `mobile`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
