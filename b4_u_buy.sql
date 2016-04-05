@@ -2,10 +2,10 @@
 -- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Φιλοξενητής: 127.0.0.1
--- Χρόνος δημιουργίας: 05 Απρ 2016 στις 13:44:44
--- Έκδοση διακομιστή: 10.1.10-MariaDB
--- Έκδοση PHP: 5.6.19
+-- Host: 127.0.0.1
+-- Generation Time: Apr 05, 2016 at 05:42 PM
+-- Server version: 10.1.10-MariaDB
+-- PHP Version: 5.6.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Βάση δεδομένων: `b4_u_buy`
+-- Database: `b4_u_buy`
 --
 
 -- --------------------------------------------------------
 
 --
--- Δομή πίνακα για τον πίνακα `home_page`
+-- Table structure for table `home_page`
 --
 
 CREATE TABLE `home_page` (
@@ -36,7 +36,7 @@ CREATE TABLE `home_page` (
 -- --------------------------------------------------------
 
 --
--- Δομή πίνακα για τον πίνακα `login`
+-- Table structure for table `login`
 --
 
 CREATE TABLE `login` (
@@ -47,32 +47,64 @@ CREATE TABLE `login` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Άδειασμα δεδομένων του πίνακα `login`
+-- Dumping data for table `login`
 --
 
 INSERT INTO `login` (`id`, `email`, `password`, `role`) VALUES
 (1, 'giorgos@gmail.com', '12345', 'admin'),
 (2, 'stavros@gmail.com', '1234', 'admin');
 
+-- --------------------------------------------------------
+
 --
--- Ευρετήρια για άχρηστους πίνακες
+-- Table structure for table `mobile`
+--
+
+CREATE TABLE `mobile` (
+  `ID` int(10) UNSIGNED NOT NULL,
+  `Name` varchar(255) NOT NULL,
+  `Screen Size` varchar(255) NOT NULL,
+  `Processor` varchar(255) NOT NULL,
+  `Internal Memory` int(11) NOT NULL,
+  `Card Slot` int(11) NOT NULL,
+  `Ram` int(11) NOT NULL,
+  `Camera` int(11) NOT NULL,
+  `OS` varchar(255) NOT NULL,
+  `Battery` int(11) NOT NULL,
+  `Manufacturer` int(11) NOT NULL,
+  `Resolution` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Mobile phone table with specs';
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- Ευρετήρια για πίνακα `login`
+-- Indexes for table `login`
 --
 ALTER TABLE `login`
   ADD UNIQUE KEY `id` (`id`);
 
 --
--- AUTO_INCREMENT για άχρηστους πίνακες
+-- Indexes for table `mobile`
+--
+ALTER TABLE `mobile`
+  ADD PRIMARY KEY (`ID`,`Name`);
+
+--
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT για πίνακα `login`
+-- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `mobile`
+--
+ALTER TABLE `mobile`
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
