@@ -22,7 +22,7 @@
 	<div class="black nav-wrapper">
 	
       <a href="<?php echo base_url("index.php/home/home_page"); ?>" class="brand-logo">
-		<img width=250 height=60 src="<?php echo base_url("images/BUB.jpg"); ?>">
+		<img width=250 height=64 src="<?php echo base_url("images/BUB.jpg"); ?>">
 		</a>
 	  
       
