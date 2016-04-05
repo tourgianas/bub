@@ -30,8 +30,8 @@
 				<div class="collapsible-body">
 			        	<form action="#">
 					    <p>
-					      <input type="checkbox" id="test5" />
-					      <label for="test5">Επιλογες</label>
+					      <input type="checkbox" id="test1" />
+					      <label for="test1">Επιλογες</label>
 					    </p>
 					    </form>
 			    </div></li>
@@ -40,8 +40,8 @@
 				<div class="collapsible-body">
 			        	<form action="#">
 					    <p>
-					      <input type="checkbox" id="test5" />
-					      <label for="test5">Επιλογές</label>
+					      <input type="checkbox" id="test2" />
+					      <label for="test2">Επιλογές</label>
 					    </p>
 					    </form>
 			    </div></li>
@@ -50,8 +50,8 @@
 				<div class="collapsible-body">
 			        	<form action="#">
 					    <p>
-					      <input type="checkbox" id="test5" />
-					      <label for="test5">Επιλογές</label>
+					      <input type="checkbox" id="test3" />
+					      <label for="test3">Επιλογές</label>
 					    </p>
 					    </form>
 			    </div></li>
@@ -60,8 +60,8 @@
 				<div class="collapsible-body">
 			        	<form action="#">
 					    <p>
-					      <input type="checkbox" id="test5" />
-					      <label for="test5">Επιλογές</label>
+					      <input type="checkbox" id="test4" />
+					      <label for="test4">Επιλογές</label>
 					    </p>
 					    </form>
 			    </div></li>
@@ -80,8 +80,8 @@
 				<div class="collapsible-body">
 			        	<form action="#">
 					    <p>
-					      <input type="checkbox" id="test5" />
-					      <label for="test5">Επιλογές</label>
+					      <input type="checkbox" id="test6" />
+					      <label for="test6">Επιλογές</label>
 					    </p>
 					    </form>
 			    </div></li>
