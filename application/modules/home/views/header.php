@@ -18,44 +18,45 @@
 	  <script type="text/javascript" src="<?php echo base_url("assets/js/materialize.min.js"); ?>"></script>
 		
 	<nav>
-	<?php
-		if($_SESSION['role'] == 'admin')
-		{
-	?>
-			<div class="black nav-wrapper">
-	<?php
-		}else{
-	?>
-			<div class="blue nav-wrapper">
-	<?php
-		}
-	?>
+
+	<div class="black nav-wrapper">
+	
       <a href="<?php echo base_url("index.php/home/home_page"); ?>" class="brand-logo">
 		<img width=250 height=60 src="<?php echo base_url("images/BUB.jpg"); ?>">
 		</a>
 	  
       
       <ul id="nav-mobile" class="right hide-on-med-and-down">
+	  <li>
+			<form>
+				<div class="input-field">
+				  <input id="search" type="search" required>
+				  <label for="search"><i class="material-icons">search</i></label>
+				  <i class="material-icons">close</i>
+				</div>
+			</form>
+		</li>
           <?php
             if($_SESSION['role'] == 'admin')
             {
           ?>
-        <li><a href="<?php echo base_url("index.php/home/lcs"); ?>">Epilogh 1</a></li>
+        <li><a href="<?php echo base_url("index.php/home/stuff"); ?>">Epilogh 1</a></li>
 		<?php
             }
 		?>
-        <li><a href="<?php echo base_url("index.php/home/persons"); ?>">Epilogh 2</a></li>
-		<li>
-		<form>
-        <div class="input-field">
-          <input id="search" type="search" required>
-          <label for="search"><i class="material-icons">search</i></label>
-          <i class="material-icons">close</i>
-        </div>
-      </form>
-	  </li>
+        <li><a href="<?php echo base_url("index.php/home/stuff"); ?>">Epilogh 2</a></li>
+        <?php
+		if(isset($_SESSION['logged_in']))
+		{
+		?>
         <li><a href="<?php echo base_url("index.php/home/logout"); ?>">Logout</a></li>
-				
+		<?php
+			}else{
+		?>		
+        <li><a href="<?php echo base_url("index.php/login"); ?>">Login</a></li>
+		<?php
+			}
+		?>
       </ul>
     </div>
 	</nav>
