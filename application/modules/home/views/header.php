@@ -41,11 +41,10 @@
             {
           ?>
         <li><a href="<?php echo base_url("index.php/home/stuff"); ?>">Epilogh 1</a></li>
+        <li><a href="<?php echo base_url("index.php/home/stuff"); ?>">Epilogh 2</a></li>
 		<?php
             }
-		?>
-        <li><a href="<?php echo base_url("index.php/home/stuff"); ?>">Epilogh 2</a></li>
-        <?php
+		
 		if(isset($_SESSION['logged_in']))
 		{
 			if($_SESSION['logged_in']){
@@ -63,4 +62,3 @@
       </ul>
     </div>
 	</nav>
-    <div class="container">
