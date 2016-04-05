@@ -22,7 +22,7 @@
 		if($_SESSION['role'] == 'admin')
 		{
 	?>
-			<div class="nav-wrapper">
+			<div class="black nav-wrapper">
 	<?php
 		}else{
 	?>
@@ -30,12 +30,12 @@
 	<?php
 		}
 	?>
-      <a href="<?php echo base_url("index.php/home/home_page"); ?>" class="brand-logo"><?php echo $page_title; ?></a>
+      <a href="<?php echo base_url("index.php/home/home_page"); ?>" class="brand-logo">
+		<img width=250 height=60 src="<?php echo base_url("images/BUB.jpg"); ?>">
+		</a>
 	  
-		<img class="materialboxed" width=300 height=100 src="<?php echo base_url("images/BUB.jpg"); ?>">
       
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="<?php echo base_url("index.php/home/home_page"); ?>">Home</a></li>
           <?php
             if($_SESSION['role'] == 'admin')
             {
@@ -45,6 +45,15 @@
             }
 		?>
         <li><a href="<?php echo base_url("index.php/home/persons"); ?>">Epilogh 2</a></li>
+		<li>
+		<form>
+        <div class="input-field">
+          <input id="search" type="search" required>
+          <label for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+      </form>
+	  </li>
         <li><a href="<?php echo base_url("index.php/home/logout"); ?>">Logout</a></li>
 				
       </ul>
