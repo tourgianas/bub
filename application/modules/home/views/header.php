@@ -32,7 +32,7 @@
 	?>
       <a href="<?php echo base_url("index.php/home/home_page"); ?>" class="brand-logo"><?php echo $page_title; ?></a>
 	  
-		<img class="materialboxed" src="images/BUB.jpg">
+		<img class="materialboxed" width=300 height=100 src="<?php echo base_url("images/BUB.jpg"); ?>">
       
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="<?php echo base_url("index.php/home/home_page"); ?>">Home</a></li>
