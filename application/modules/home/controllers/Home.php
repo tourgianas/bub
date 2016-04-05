@@ -9,7 +9,6 @@
            	 if (!isset($_SESSION['role']))
     		{
            		$_SESSION['role'] = 'visitor';
-           		$_SESSION['logged_in'] = false;
                 redirect('home/visitor');
             }
     	}

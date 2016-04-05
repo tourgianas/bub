@@ -48,13 +48,16 @@
         <?php
 		if(isset($_SESSION['logged_in']))
 		{
+			if($_SESSION['logged_in']){
 		?>
-        <li><a href="<?php echo base_url("index.php/home/logout"); ?>">Logout</a></li>
+        		<li><a href="<?php echo base_url("index.php/home/logout"); ?>">Logout</a></li>
 		<?php
-			}else{
+			}
+		}else{
 		?>		
-        <li><a href="<?php echo base_url("index.php/login"); ?>">Login</a></li>
+        		<li><a href="<?php echo base_url("index.php/login"); ?>">Login</a></li>
 		<?php
+			
 			}
 		?>
       </ul>
