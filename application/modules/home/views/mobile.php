@@ -1,4 +1,4 @@
-
+<input type="text" placeholder="Search..." id="search" style="width: 100%; height: 40px; border: 1px">
 <div class="row">
 
 	<div class="col s12 m4 l3"> <!-- Side bar -->
@@ -155,7 +155,7 @@
 	<div class="col s12 m8 l9"> <!-- Results -->
 
 
-      <table class="bordered">
+      <table class="bordered centered">
         <thead>
 
           <tr class="first">
@@ -180,12 +180,10 @@
             if($query->num_rows() > 0)
             {
             	foreach ($query->result() as $stuff) {
-					echo "<tr>";
+					echo "<tr class='searchme'>";
         
-					echo "<td>";
-            		echo "<a href='mobile_view?id=".$stuff->ID."'><img width=60 height=80 src=";
-            		echo base_url($stuff->Photo);
-            		echo "></a><br>";
+					echo "<td class='searchname'>";
+            		echo "<a href='mobile_view?id=".$stuff->ID."'><img width=60 height=80 src=".base_url($stuff->Photo)."></a><br>";
             		echo $stuff->Name;
             		echo "</td><td class='".$stuff->Screen_Size."' rel='".$stuff->Screen_Size."'>";
             		echo $stuff->Screen_Size;
@@ -238,6 +236,5 @@ $("input:checkbox").click(function () {
         $('tr').show();
     }
 });
-
 
 </script>

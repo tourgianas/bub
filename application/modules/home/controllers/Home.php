@@ -77,6 +77,18 @@
             $this->load->view('footer');
         }
 
+        public function action_page($page = 'action_page')
+        {
+            $data['page_title'] = "Before You Buy";
+
+            $this->load->view('header', $data);
+
+			$data = array(
+			'search_name' => $this->input->post('search')
+			);
+            $this->load->view('action_page', $data);
+            $this->load->view('footer');
+        }
 
         public function logout($page = 'logout')
         {

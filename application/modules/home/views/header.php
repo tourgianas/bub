@@ -28,10 +28,12 @@
       
       <ul id="nav-mobile" class="right hide-on-med-and-down">
 	  <li>
-			<form>
+			<form action="action_page" method="post">
 				<div class="input-field">
-				  <input id="search" type="search" required>
-				  <label for="search"><i class="material-icons">search</i></label>
+				  <input id="search" name="search" type="search" required>
+				  <label for="search">
+				  <i class="material-icons">search</i>
+				  </label>
 				  <i class="material-icons">close</i>
 				</div>
 			</form>
