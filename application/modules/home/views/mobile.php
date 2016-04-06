@@ -1,30 +1,3 @@
-<script>
-  $(document).ready(function(){
-    $('.collapsible').collapsible({
-      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-    });
-  });
-
-$("input:checkbox").click(function () {
-    var showAll = false;
-    $('tr').not('.first').hide();
-    $('input[type=checkbox]').each(function () {
-        if ($(this)[0].checked) {
-            showAll = false;
-            var value = $(this).val();            
-            $('td.[rel="' + value + '"]').parent('tr').show();
-        }
-    });
-    if(showAll){
-        $('tr').show();
-    }
-});
-
-function handleClick(cb) {
-  display("Clicked, new value = " + cb.checked);
-}
-</script>
-
 
 <div class="row">
 
@@ -36,73 +9,130 @@ function handleClick(cb) {
 			<div class="collapsible-body"><p>Εδώ θα βρείτε τα πάντα για τα κινητά.</p>
   				<ul class="collapsible" data-collapsible="expandable">
   				<li>
-				<div class="collapsible-header"><i class="material-icons"></i>Κατασκευαστής</div>
+				<div class="collapsible-header active"><i class="material-icons"></i>Κατασκευαστής</div>
 				<div class="collapsible-body">
-			        	
 					    <p>
 	        <?php  			
 						$this->db->select('*');
+						$this->db->group_by("Manufacturer"); 
 						$query = $this->db->get('mobile');
 
 			            if($query->num_rows() > 0)
 			            {
 			            	foreach ($query->result() as $stuff) {
-					      		echo "<input type='checkbox' value='".$stuff->Manufacturer."' id='".$stuff->ID."' />";
-			            		echo "<label for='".$stuff->ID."'>".$stuff->Manufacturer."</label>";
+					      		echo "<input type='checkbox' rel='".$stuff->Manufacturer."' value='".$stuff->Manufacturer."' id='".$stuff->Manufacturer."' />";
+			            		echo "<label for='".$stuff->Manufacturer."'>".$stuff->Manufacturer."</label>";
 			            	}
 			            }
     		?>
 					    </p>
-					    
 			    </div></li>
+
   				<li>
-				<div class="collapsible-header"><i class="material-icons"></i>Μνήμη Ram</div>
+				<div class="collapsible-header active"><i class="material-icons"></i>Μνήμη Ram</div>
+				<div class="collapsible-body">
+			        	<p>
+		    <?php  			
+						$this->db->select('*');
+						$this->db->group_by("Ram"); 
+						$query = $this->db->get('mobile');
+
+			            if($query->num_rows() > 0)
+			            {
+			            	foreach ($query->result() as $stuff) {
+					      		echo "<input type='checkbox' rel='".$stuff->Ram."' value='".$stuff->Ram."' id='".$stuff->Ram."' />";
+			            		echo "<label for='".$stuff->Ram."'>".$stuff->Ram."</label>";
+			            	}
+			            }
+    		?>
+    					</p>
+			    </div></li>
+
+  				<li>
+				<div class="collapsible-header active"><i class="material-icons"></i>Επεξεργαστής</div>
 				<div class="collapsible-body">
 			        	<form action="#">
-					    <p>
-					      <input type="checkbox" id="test2" />
-					      <label for="test2">Επιλογές</label>
-					    </p>
+			        	<p>
+		    <?php  			
+						$this->db->select('*');
+						$this->db->group_by("CPU_type"); 
+						$query = $this->db->get('mobile');
+
+			            if($query->num_rows() > 0)
+			            {
+			            	foreach ($query->result() as $stuff) {
+					      		echo "<input type='checkbox' rel='".$stuff->CPU_type."' value='".$stuff->CPU_type."' id='".$stuff->CPU_type."' />";
+			            		echo "<label for='".$stuff->CPU_type."'>".$stuff->CPU_type."</label>";
+			            	}
+			            }
+    		?>
+    					</p>
 					    </form>
 			    </div></li>
+
   				<li>
-				<div class="collapsible-header"><i class="material-icons"></i>Επεξεργαστής</div>
+				<div class="collapsible-header active"><i class="material-icons"></i>Μέγεθος Οθόνης</div>
 				<div class="collapsible-body">
 			        	<form action="#">
-					    <p>
-					      <input type="checkbox" id="test3" />
-					      <label for="test3">Επιλογές</label>
-					    </p>
+			        	<p>
+		    <?php  			
+						$this->db->select('*');
+						$this->db->group_by("Screen_Size"); 
+						$query = $this->db->get('mobile');
+
+			            if($query->num_rows() > 0)
+			            {
+			            	foreach ($query->result() as $stuff) {
+					      		echo "<input type='checkbox' rel='".$stuff->Screen_Size."' value='".$stuff->Screen_Size."' id='".$stuff->Screen_Size."' />";
+			            		echo "<label for='".$stuff->Screen_Size."'>".$stuff->Screen_Size."</label>";
+			            	}
+			            }
+    		?>
+    					</p>
 					    </form>
 			    </div></li>
+
   				<li>
-				<div class="collapsible-header"><i class="material-icons"></i>Μέγεθος Οθόνης</div>
+				<div class="collapsible-header active"><i class="material-icons"></i>Εσωτερική Μνήμη</div>
 				<div class="collapsible-body">
 			        	<form action="#">
-					    <p>
-					      <input type="checkbox" id="test4" />
-					      <label for="test4">Επιλογές</label>
-					    </p>
+			        	<p>
+		    <?php  			
+						$this->db->select('*');
+						$this->db->group_by("Internal_Memory"); 
+						$query = $this->db->get('mobile');
+
+			            if($query->num_rows() > 0)
+			            {
+			            	foreach ($query->result() as $stuff) {
+					      		echo "<input type='checkbox' rel='".$stuff->Internal_Memory."' value='".$stuff->Internal_Memory."' id='".$stuff->Internal_Memory."' />";
+			            		echo "<label for='".$stuff->Internal_Memory."'>".$stuff->Internal_Memory."</label>";
+			            	}
+			            }
+    		?>
+    					</p>
 					    </form>
 			    </div></li>
+
   				<li>
-				<div class="collapsible-header"><i class="material-icons"></i>Εσωτερική Μνήμη</div>
+				<div class="collapsible-header active"><i class="material-icons"></i>Κάμερα</div>
 				<div class="collapsible-body">
 			        	<form action="#">
-					    <p>
-					      <input type="checkbox" id="test5" />
-					      <label for="test5">Επιλογές</label>
-					    </p>
-					    </form>
-			    </div></li>
-  				<li>
-				<div class="collapsible-header"><i class="material-icons"></i>Κάμερα</div>
-				<div class="collapsible-body">
-			        	<form action="#">
-					    <p>
-					      <input type="checkbox" id="test6" />
-					      <label for="test6">Επιλογές</label>
-					    </p>
+			        	<p>
+		    <?php  			
+						$this->db->select('*');
+						$this->db->group_by("Camera"); 
+						$query = $this->db->get('mobile');
+
+			            if($query->num_rows() > 0)
+			            {
+			            	foreach ($query->result() as $stuff) {
+					      		echo "<input type='checkbox' rel='".$stuff->Camera."' value='".$stuff->Camera."' id='".$stuff->Camera."' />";
+			            		echo "<label for='".$stuff->Camera."'>".$stuff->Camera."</label>";
+			            	}
+			            }
+    		?>
+    					</p>
 					    </form>
 			    </div></li>
 			    </ul>
@@ -130,17 +160,12 @@ function handleClick(cb) {
 
           <tr class="first">
               <th>Όνομα</th>
-              <th>Ανάλυση Οθόνης</th>
+              <th>Μέγεθος Οθόνης</th>
               <th>Επεξεργαστής</th>
               <th>Εσωτερική Μνήμη</th>
-              <th>Card Slot</th>
               <th>Μνήμη Ram</th>
               <th>Φωτογραφική Μηχανή</th>
-              <th>Λειτουργικό Σύστημα</th>
-              <th>Μπαταρία</th>
               <th>Κατασκευαστής</th>
-              <th>Ανάλυση οθόνης</th>
-              <th>Εικόνα</th>
           </tr>
         </thead>
 
@@ -149,9 +174,7 @@ function handleClick(cb) {
         <?php
 
 			$this->db->select('*');
-			if(isset($ch_cat_id)){
-				$this->db->where('ID', $ch_cat_id);
-			}
+			$this->db->order_by("Manufacturer, Name"); 
 			$query = $this->db->get('mobile');
 
             if($query->num_rows() > 0)
@@ -160,31 +183,24 @@ function handleClick(cb) {
 					echo "<tr>";
         
 					echo "<td>";
-            		echo $stuff->Name;
-            		echo "</td><td>";
-            		echo $stuff->Screen_Size;
-            		echo "</td><td>";
-            		echo $stuff->Processor;
-            		echo "</td><td>";
-            		echo $stuff->Internal_Memory;
-            		echo "</td><td>";
-            		echo $stuff->Card_Slot;
-            		echo "</td><td>";
-            		echo $stuff->Ram;
-            		echo "</td><td>";
-            		echo $stuff->Camera;
-            		echo "</td><td>";
-            		echo $stuff->OS;
-            		echo "</td><td>";
-            		echo $stuff->Battery;
-            		echo "</td><td rel='".$stuff->Manufacturer."'>";
-            		echo $stuff->Manufacturer;
-            		echo "</td><td>";
-            		echo $stuff->Resolution;
-            		echo "</td><td>";
-            		echo "<img width=60 height=80 src=";
+            		echo "<a href='mobile_view?id=".$stuff->ID."'><img width=60 height=80 src=";
             		echo base_url($stuff->Photo);
-            		echo ">";
+            		echo "></a><br>";
+            		echo $stuff->Name;
+            		echo "</td><td class='".$stuff->Screen_Size."' rel='".$stuff->Screen_Size."'>";
+            		echo $stuff->Screen_Size;
+            		echo "</td><td class='".$stuff->CPU_type."' rel='".$stuff->CPU_type."'>";
+            		echo $stuff->CPU_type;
+            		echo " ";
+            		echo $stuff->CPU;
+            		echo "</td><td class='".$stuff->Internal_Memory."' rel='".$stuff->Internal_Memory."'>";
+            		echo $stuff->Internal_Memory;
+            		echo "</td><td class='".$stuff->Ram."' rel='".$stuff->Ram."'>";
+            		echo $stuff->Ram;
+            		echo "</td><td class='".$stuff->Camera."' rel='".$stuff->Camera."'>";
+            		echo $stuff->Camera;
+            		echo "</td><td class='".$stuff->Manufacturer."' rel='".$stuff->Manufacturer."'>";
+            		echo $stuff->Manufacturer;
             		echo "</td>";
           			echo "</tr>";
             	}
@@ -199,3 +215,29 @@ function handleClick(cb) {
 	</div>
 
 </div>
+
+<script>
+  $(document).ready(function(){
+    $('.collapsible').collapsible({
+      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    });
+  });
+
+$("input:checkbox").click(function () {
+    var showAll = true;
+    $('tr').not('.first').hide();
+    $('input[type=checkbox]').each(function () {
+        if ($(this)[0].checked) {
+            showAll = false;
+            var status = $(this).attr('rel');
+            var value = $(this).val();            
+            $('td.' + status + '[rel="' + value + '"]').parent('tr').show();
+        }
+    });
+    if(showAll){
+        $('tr').show();
+    }
+});
+
+
+</script>

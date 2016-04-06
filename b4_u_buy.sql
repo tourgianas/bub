@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Φιλοξενητής: 127.0.0.1
--- Χρόνος δημιουργίας: 05 Απρ 2016 στις 21:54:24
+-- Χρόνος δημιουργίας: 06 Απρ 2016 στις 22:29:58
 -- Έκδοση διακομιστή: 10.1.10-MariaDB
 -- Έκδοση PHP: 5.6.19
 
@@ -64,10 +64,11 @@ CREATE TABLE `mobile` (
   `ID` int(10) UNSIGNED NOT NULL,
   `Name` varchar(255) NOT NULL,
   `Screen_Size` varchar(255) NOT NULL,
-  `Processor` varchar(255) NOT NULL,
+  `CPU` varchar(255) NOT NULL,
+  `CPU_type` varchar(25) NOT NULL,
   `Internal_Memory` int(11) NOT NULL,
   `Card_Slot` int(11) NOT NULL,
-  `Ram` int(11) NOT NULL,
+  `Ram` int(20) NOT NULL,
   `Camera` int(11) NOT NULL,
   `OS` varchar(255) NOT NULL,
   `Battery` varchar(255) NOT NULL,
@@ -80,11 +81,13 @@ CREATE TABLE `mobile` (
 -- Άδειασμα δεδομένων του πίνακα `mobile`
 --
 
-INSERT INTO `mobile` (`ID`, `Name`, `Screen_Size`, `Processor`, `Internal_Memory`, `Card_Slot`, `Ram`, `Camera`, `OS`, `Battery`, `Manufacturer`, `Resolution`, `Photo`) VALUES
-(1, 'Galaxy S4', '5.0', 'Quad-core 1.9 GHz Krait 300', 16, 1, 2, 15, 'Android OS, v4.2.2 (Jelly Bean)', '2600 mAh', 'Samsung', '1080 x 1920', '/images/Mobile/1.jpeg'),
-(2, 'iPhone 5S', '4.0', 'Dual-core 1.3 GHz Cyclone (ARM v8-based)', 16, 0, 1, 8, 'iOS 7', '1560 mAh', 'Apple', '640 x 1136', '/images/Mobile/2.jpeg'),
-(3, 'Nokia Lumia 520', '4.0', 'Dual-core 1.0 GHz', 8, 1, 512, 5, 'Microsoft Windows Phone 8', '1430 mAh', 'Nokia', '480 x 800', '/images/Mobile/3.jpg'),
-(4, 'LG G5', '5.3', 'Dual-core 2.15 GHz Kryo ', 32, 1, 4000, 16, 'Android OS, v6.0.1 (Marshmallow)', '2800 mAh ', 'LG', '1440 x 2560', '/images/Mobile/4.jpg');
+INSERT INTO `mobile` (`ID`, `Name`, `Screen_Size`, `CPU`, `CPU_type`, `Internal_Memory`, `Card_Slot`, `Ram`, `Camera`, `OS`, `Battery`, `Manufacturer`, `Resolution`, `Photo`) VALUES
+(1, 'Galaxy S4', '5.0', '1.9 GHz Krait 300', 'Quad-core', 16, 1, 2, 15, 'Android OS, v4.2.2 (Jelly Bean)', '2600 mAh', 'Samsung', '1080 x 1920', '/images/Mobile/1.jpeg'),
+(2, 'iPhone 5S', '4.0', '1.3 GHz Cyclone (ARM v8-based)', 'Dual-core', 16, 0, 1, 8, 'iOS 7', '1560 mAh', 'Apple', '640 x 1136', '/images/Mobile/2.jpeg'),
+(3, 'Lumia 520', '4.0', '1.0 GHz', 'Dual-core', 8, 1, 512, 5, 'Microsoft Windows Phone 8', '1430 mAh', 'Nokia', '480 x 800', '/images/Mobile/3.jpg'),
+(4, 'LG G5', '5.3', '2.15 GHz Kryo ', 'Dual-core', 32, 1, 4, 16, 'Android OS, v6.0.1 (Marshmallow)', '2800 mAh ', 'LG', '1440 x 2560', '/images/Mobile/4.jpg'),
+(5, 'Galaxy S6', '5.1', '1.5 GHz Cortex-A53', 'Quad-core', 128, 0, 3, 16, 'Android OS, v5.0.2 (Lollipop)', '2550 mAh ', 'Samsung', '1440 x 2560', '/images/Mobile/5.jpg'),
+(6, 'Galaxy S5', '5.1', '2.5 GHz Krait 400', 'Quad-core', 32, 1, 2, 16, 'Android OS, v4.4.2 (KitKat)', '2800 mAh', 'Samsung', '1080 x 1920', '/images/Mobile/6.jpg');
 
 --
 -- Ευρετήρια για άχρηστους πίνακες
@@ -115,7 +118,7 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT για πίνακα `mobile`
 --
 ALTER TABLE `mobile`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
