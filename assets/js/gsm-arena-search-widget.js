@@ -383,13 +383,12 @@ function setResultsList(_list) {
 			}
 			
 			function cleanURL(s) {
-				return s.toLowerCase().replace(/\s+|-|\/|\./g, "_"); //.replace(/[^a-z0-9_]+/gi, "");
+				return s.toLowerCase().replace(/\s+|-|\/|\./g, " "); //.replace(/[^a-z0-9_]+/gi, "");
 			}
 
 			function makeURL(p) {
 				var s = cleanURL(makers["" + p[MAKERID]]);
-				s += "_" + cleanURL(p[NAME]);
-				s += "-" + p[PHONEID] + ".php";
+				s += "&name=" + cleanURL(p[NAME]);
 				return s;
 			}
 			
@@ -409,7 +408,7 @@ function setResultsList(_list) {
 					
 				lastClickedId = phone[PHONEID];
 				
-				var link = "http://www.gsmarena.com/" + makeURL(phone);
+				var link = "mobile_view_gsm?manufacturer=" + makeURL(phone);
 				phoneBigPicLink.href = link;
 				bigPic.src = BIGPIC_URL + phone[THUMB]; // start loading the big pic right away
 				

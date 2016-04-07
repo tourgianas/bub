@@ -77,6 +77,15 @@
             $this->load->view('footer');
         }
 
+        public function mobile_view_gsm($page = 'mobile_view_gsm')
+        {
+            $data['page_title'] = "Before You Buy";
+
+            $this->load->view('header', $data);
+            $this->load->view('mobile_view_gsm', $data);
+            $this->load->view('footer');
+        }
+
         public function action_page($page = 'action_page')
         {
             $data['page_title'] = "Before You Buy";

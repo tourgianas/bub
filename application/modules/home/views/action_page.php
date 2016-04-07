@@ -1,5 +1,6 @@
 <div class="container">
 <?php
+
 	if(isset($search_name)){
 		$search_name = strtolower($search_name);
 		$this->db->select('*');
@@ -61,6 +62,8 @@
             }else{
             	echo "Δεν βρέθηκε κάτι με αυτό το όνομα στη βάση δεδομένων.";
             }
+	}else{
+		echo "Error";
 	}
 ?>
 </div>
