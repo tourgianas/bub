@@ -1,27 +1,104 @@
-<input type="text" placeholder="Search..." id="search" style="width: 100%; height: 40px; border: 1px">
 <div class="row">
 
 	<div class="col s12 m4 l3"> <!-- Side bar -->
         
 		<ul class="collapsible" data-collapsible="accordion">
 			<li>
-			<div class="collapsible-header active"><i class="material-icons">stay_current_portrait</i>Κινητά Τηλέφωνα</div>
-			<div class="collapsible-body"><p>Εδώ θα βρείτε τα πάντα για τα κινητά.</p>
+			<div class="collapsible-header active"><a href="mobile?ch=0"><i class="material-icons">stay_current_portrait</i>Κινητά Τηλέφωνα</a></div>
+			<div class="collapsible-body"><p>Εδώ θα βρείτε τα πάντα για τα κινητά.<br><a href="mobile?ch=0">Καθαρισμός Φίλτρων<i class="material-icons">close</i></a></p>
   				<ul class="collapsible" data-collapsible="expandable">
   				<li>
 				<div class="collapsible-header active"><i class="material-icons"></i>Κατασκευαστής</div>
 				<div class="collapsible-body">
 					    <p>
-	        <?php  			
-						$this->db->select('*');
+	        <?php  		
+				if ( isset($_SESSION['data']) ) {
+					list($manufacturer, $ram, $cpu, $screen_size, $internal_memory, $camera) = explode(":", $_SESSION['data']);
+
+					if (isset($_GET['ch'])) {
+					
+						switch ($_GET['ch']) {
+							case '1':
+								if ($manufacturer == '' ) {
+									$manufacturer = "Manufacturer='".$_GET['temp']."'";
+								}else{
+									$manufacturer = $manufacturer." OR Manufacturer='".$_GET['temp']."'";
+								}
+								break;
+							case '2':
+								if ($manufacturer == '') {
+									$manufacturer = "Manufacturer=' '";
+								}
+								$ram = $ram." OR Ram='".$_GET['temp']."'";
+								break;
+							case '3':
+								if ($manufacturer == '') {
+									$manufacturer = "Manufacturer=' '";
+								}
+								$cpu = $cpu." OR CPU_type='".$_GET['temp']."'";
+								break;
+							case '4':
+								if ($manufacturer == '') {
+									$manufacturer = "Manufacturer=' '";
+								}
+								$screen_size = $screen_size." OR Screen_Size='".$_GET['temp']."'";
+								break;
+							case '5':
+								if ($manufacturer == '') {
+									$manufacturer = "Manufacturer=' '";
+								}
+								$internal_memory = $internal_memory." OR Internal_Memory='".$_GET['temp']."'";
+								break;
+							case '6':
+								if ($manufacturer == '') {
+									$manufacturer = "Manufacturer=' '";
+								}
+								$camera = $camera." OR Camera='".$_GET['temp']."'";
+								break;
+							case '0':
+								$manufacturer = "";
+								$ram = "";
+								$cpu = "";
+								$screen_size = "";
+								$internal_memory = "";
+								$camera = "";
+								$data = $manufacturer.":".$ram.":".$cpu.":".$screen_size.":".$internal_memory.":".$camera; 
+								$where = $manufacturer.$ram.$cpu.$screen_size.$internal_memory.$camera;
+								$_SESSION['data'] = $data;
+								break;
+						}	
+					}
+					
+					$where = $manufacturer.$ram.$cpu.$screen_size.$internal_memory.$camera;
+					$data = $manufacturer.":".$ram.":".$cpu.":".$screen_size.":".$internal_memory.":".$camera;
+					$_SESSION['data'] = $data;
+
+				}else{		           
+
+					$manufacturer = "";
+					$ram = "";
+					$cpu = "";
+					$screen_size = "";
+					$internal_memory = "";
+					$camera = "";
+					$data = $manufacturer.":".$ram.":".$cpu.":".$screen_size.":".$internal_memory.":".$camera; 
+					$where = $manufacturer.$ram.$cpu.$screen_size.$internal_memory.$camera;
+					$_SESSION['data'] = $data;
+
+				}	
+						$this->db->select('Manufacturer');
 						$this->db->group_by("Manufacturer"); 
 						$query = $this->db->get('mobile');
 
 			            if($query->num_rows() > 0)
 			            {
 			            	foreach ($query->result() as $stuff) {
-					      		echo "<input type='checkbox' rel='".$stuff->Manufacturer."' value='".$stuff->Manufacturer."' id='".$stuff->Manufacturer."' />";
-			            		echo "<label for='".$stuff->Manufacturer."'>".$stuff->Manufacturer."</label>";
+			            		if (strpos($manufacturer, $stuff->Manufacturer)) {
+			            			echo "<input type='checkbox' id='".$stuff->Manufacturer."' checked/>";
+			            		}else{
+					      			echo "<input type='checkbox' id='".$stuff->Manufacturer."' />";
+					      		}
+			            		echo "<label for='".$stuff->Manufacturer."'><a href='mobile?ch=1&temp=".$stuff->Manufacturer."'>".$stuff->Manufacturer."</a></label>";
 			            	}
 			            }
     		?>
@@ -33,15 +110,19 @@
 				<div class="collapsible-body">
 			        	<p>
 		    <?php  			
-						$this->db->select('*');
+						$this->db->select('Ram');
 						$this->db->group_by("Ram"); 
 						$query = $this->db->get('mobile');
 
 			            if($query->num_rows() > 0)
 			            {
 			            	foreach ($query->result() as $stuff) {
-					      		echo "<input type='checkbox' rel='".$stuff->Ram."' value='".$stuff->Ram."' id='".$stuff->Ram."' />";
-			            		echo "<label for='".$stuff->Ram."'>".$stuff->Ram."</label>";
+			            		if (strpos($ram, $stuff->Ram)) {
+			            			echo "<input type='checkbox' id='".$stuff->Ram."' checked/>";
+			            		}else{
+					      			echo "<input type='checkbox' id='".$stuff->Ram."' />";
+					      		}
+			            		echo "<label for='".$stuff->Ram."'><a href='mobile?ch=2&temp=".$stuff->Ram."'>".$stuff->Ram."</a></label>";
 			            	}
 			            }
     		?>
@@ -54,15 +135,19 @@
 			        	<form action="#">
 			        	<p>
 		    <?php  			
-						$this->db->select('*');
+						$this->db->select('CPU_type');
 						$this->db->group_by("CPU_type"); 
 						$query = $this->db->get('mobile');
 
 			            if($query->num_rows() > 0)
 			            {
 			            	foreach ($query->result() as $stuff) {
-					      		echo "<input type='checkbox' rel='".$stuff->CPU_type."' value='".$stuff->CPU_type."' id='".$stuff->CPU_type."' />";
-			            		echo "<label for='".$stuff->CPU_type."'>".$stuff->CPU_type."</label>";
+			            		if (strpos($cpu, $stuff->CPU_type)) {
+			            			echo "<input type='checkbox' id='".$stuff->CPU_type."' checked/>";
+			            		}else{
+					      			echo "<input type='checkbox' id='".$stuff->CPU_type."' />";
+					      		}
+			            		echo "<label for='".$stuff->CPU_type."'><a href='mobile?ch=3&temp=".$stuff->CPU_type."'>".$stuff->CPU_type."</a></label>";
 			            	}
 			            }
     		?>
@@ -76,15 +161,19 @@
 			        	<form action="#">
 			        	<p>
 		    <?php  			
-						$this->db->select('*');
+						$this->db->select('Screen_Size');
 						$this->db->group_by("Screen_Size"); 
 						$query = $this->db->get('mobile');
 
 			            if($query->num_rows() > 0)
 			            {
 			            	foreach ($query->result() as $stuff) {
-					      		echo "<input type='checkbox' rel='".$stuff->Screen_Size."' value='".$stuff->Screen_Size."' id='".$stuff->Screen_Size."' />";
-			            		echo "<label for='".$stuff->Screen_Size."'>".$stuff->Screen_Size."</label>";
+			            		if (strpos($screen_size, $stuff->Screen_Size)) {
+			            			echo "<input type='checkbox' id='".$stuff->Screen_Size."' checked/>";
+			            		}else{
+					      			echo "<input type='checkbox' id='".$stuff->Screen_Size."' />";
+					      		}
+			            		echo "<label for='".$stuff->Screen_Size."'><a href='mobile?ch=4&temp=".$stuff->Screen_Size."'>".$stuff->Screen_Size."</a></label>";
 			            	}
 			            }
     		?>
@@ -98,15 +187,19 @@
 			        	<form action="#">
 			        	<p>
 		    <?php  			
-						$this->db->select('*');
+						$this->db->select('Internal_Memory');
 						$this->db->group_by("Internal_Memory"); 
 						$query = $this->db->get('mobile');
 
 			            if($query->num_rows() > 0)
 			            {
 			            	foreach ($query->result() as $stuff) {
-					      		echo "<input type='checkbox' rel='".$stuff->Internal_Memory."' value='".$stuff->Internal_Memory."' id='".$stuff->Internal_Memory."' />";
-			            		echo "<label for='".$stuff->Internal_Memory."'>".$stuff->Internal_Memory."</label>";
+			            		if (strpos($internal_memory, $stuff->Internal_Memory)) {
+			            			echo "<input type='checkbox' id='".$stuff->Internal_Memory."' checked/>";
+			            		}else{
+					      			echo "<input type='checkbox' id='".$stuff->Internal_Memory."' />";
+					      		}
+			            		echo "<label for='".$stuff->Internal_Memory."'><a href='mobile?ch=5&temp=".$stuff->Internal_Memory."'>".$stuff->Internal_Memory."</a></label>";
 			            	}
 			            }
     		?>
@@ -120,15 +213,19 @@
 			        	<form action="#">
 			        	<p>
 		    <?php  			
-						$this->db->select('*');
+						$this->db->select('Camera');
 						$this->db->group_by("Camera"); 
 						$query = $this->db->get('mobile');
 
 			            if($query->num_rows() > 0)
 			            {
 			            	foreach ($query->result() as $stuff) {
-					      		echo "<input type='checkbox' rel='".$stuff->Camera."' value='".$stuff->Camera."' id='".$stuff->Camera."' />";
-			            		echo "<label for='".$stuff->Camera."'>".$stuff->Camera."</label>";
+			            		if (strpos($camera, $stuff->Camera)) {
+			            			echo "<input type='checkbox' id='".$stuff->Camera."' checked/>";
+			            		}else{
+					      			echo "<input type='checkbox' id='".$stuff->Camera."' />";
+					      		}
+			            		echo "<label for='".$stuff->Camera."'><a href='mobile?ch=6&temp=".$stuff->Camera."'>".$stuff->Camera."</a></label>";
 			            	}
 			            }
     		?>
@@ -154,18 +251,12 @@
 
 	<div class="col s12 m8 l9"> <!-- Results -->
 
-
-      <table class="bordered centered">
+      <table class="bordered">
         <thead>
 
           <tr class="first">
-              <th>Όνομα</th>
-              <th>Μέγεθος Οθόνης</th>
-              <th>Επεξεργαστής</th>
-              <th>Εσωτερική Μνήμη</th>
-              <th>Μνήμη Ram</th>
-              <th>Φωτογραφική Μηχανή</th>
-              <th>Κατασκευαστής</th>
+              <th></th>
+              <th></th>
           </tr>
         </thead>
 
@@ -174,33 +265,69 @@
         <?php
 
 			$this->db->select('*');
+			if ($where != "") {
+				$this->db->where($where);
+			}
 			$this->db->order_by("Manufacturer, Name"); 
 			$query = $this->db->get('mobile');
 
             if($query->num_rows() > 0)
             {
+            	$count = 1;
             	foreach ($query->result() as $stuff) {
-					echo "<tr class='searchme'>";
+            		if($count == 1){
+						echo "<tr>";
+            		}
         
-					echo "<td class='searchname'>";
-            		echo "<a href='mobile_view?id=".$stuff->ID."'><img width=60 height=80 src=".base_url($stuff->Photo)."></a><br>";
-            		echo $stuff->Name;
-            		echo "</td><td class='".$stuff->Screen_Size."' rel='".$stuff->Screen_Size."'>";
-            		echo $stuff->Screen_Size;
-            		echo "</td><td class='".$stuff->CPU_type."' rel='".$stuff->CPU_type."'>";
-            		echo $stuff->CPU_type;
-            		echo " ";
-            		echo $stuff->CPU;
-            		echo "</td><td class='".$stuff->Internal_Memory."' rel='".$stuff->Internal_Memory."'>";
-            		echo $stuff->Internal_Memory;
-            		echo "</td><td class='".$stuff->Ram."' rel='".$stuff->Ram."'>";
-            		echo $stuff->Ram;
-            		echo "</td><td class='".$stuff->Camera."' rel='".$stuff->Camera."'>";
-            		echo $stuff->Camera;
-            		echo "</td><td class='".$stuff->Manufacturer."' rel='".$stuff->Manufacturer."'>";
-            		echo $stuff->Manufacturer;
+					echo "<td>";
+		?>
+            		<div class="row">
+
+						<div class="col s5">
+		<?php
+            		echo "<a href='mobile_view?id=".$stuff->ID."'><img width=180 height=200 src=".base_url($stuff->Photo)."></a><br>";
+		?>
+            			</div>
+
+						<div class="col s7">
+						<h5>
+		<?php
+
+					echo $stuff->Manufacturer." ".$stuff->Name;
+		?>
+						</h5>
+		<?php
+
+					echo "<br>Ανάλυση Οθόνης: ";
+					echo $stuff->Resolution;
+					echo " pixels";
+            		echo "<br>Μέγεθος Οθόνης: ";
+					echo $stuff->Screen_Size;
+					echo " inch<br>Επεξεργαστής: ";
+					echo $stuff->CPU_type;
+					echo "<br>Εσωτερική Μνήμη: ";
+					echo $stuff->Internal_Memory;
+					echo " GB<br>Μνήμη Ram: ";
+					echo $stuff->Ram;
+					if ($stuff->Ram > 16) {
+						echo " MB";
+					}else{
+						echo " GB";
+					}
+					echo "<br>Φωτογραφική Μηχανή: ";
+					echo $stuff->Camera." MP";
+		?>
+            			</div>
+        			</div>
+		<?php
             		echo "</td>";
-          			echo "</tr>";
+
+            		if($count == 2){
+						echo "</tr>";
+            			$count = 1;
+            		}else{
+            			$count = 2;
+            		}
             	}
             }
 
@@ -210,31 +337,17 @@
         </tbody>
       </table>
 
-	</div>
+  <ul class="pagination">
+    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+    <li class="active"><a href="#!">1</a></li>
+    <li class="waves-effect"><a href="#!">2</a></li>
+    <li class="waves-effect"><a href="#!">3</a></li>
+    <li class="waves-effect"><a href="#!">4</a></li>
+    <li class="waves-effect"><a href="#!">5</a></li>
+    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+  </ul>
+  </div>
+
+            
 
 </div>
-
-<script>
-  $(document).ready(function(){
-    $('.collapsible').collapsible({
-      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-    });
-  });
-
-$("input:checkbox").click(function () {
-    var showAll = true;
-    $('tr').not('.first').hide();
-    $('input[type=checkbox]').each(function () {
-        if ($(this)[0].checked) {
-            showAll = false;
-            var status = $(this).attr('rel');
-            var value = $(this).val();            
-            $('td.' + status + '[rel="' + value + '"]').parent('tr').show();
-        }
-    });
-    if(showAll){
-        $('tr').show();
-    }
-});
-
-</script>
