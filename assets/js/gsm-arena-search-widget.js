@@ -186,7 +186,7 @@ var widgetHTML = '' +
             '					<td class="searchInput">' +
             '						<img src="http://st.gsmarena.com/vv/webmasters/search-widget/search-icon.gif" class="gsma_search_icon" alt="" />' +
             '						<input type="hidden" value="yes" name="gsma_sQuickSearch" id="gsma_sQuickSearch" />' +
-            '						<input type="search" name="gsma_sSearch" placeholder="Phone search" results="5" id="gsma_searchfield" class="boxsizingBorder" autocomplete="off" />' +
+            '						<input type="search" name="gsma_sSearch" placeholder="Search..." results="5" id="gsma_searchfield" class="boxsizingBorder" autocomplete="off" />' +
             '					</td>' +
             '				</tr>' +
             '			</table>' +
@@ -198,12 +198,12 @@ var widgetHTML = '' +
             '			</div>' +
             '			<div id="gsma_phone_detail">' +
 			'				<div id="animate" class="animated">' +
-			'					<a href="" target="_blank" id="gsma_phone_pic"> ' +
+			'					<a href="" id="gsma_phone_pic"> ' +
 			'						<img src="" alt="" />' +
 			'					</a>' +
 			'					<div id="gsma_table">' +
 			'					</div>' +
-			'					<a class="gsma_full_specs_link" target="_blank" href="http://www.gsmarena.com">Go to GSMArena.com &raquo;' +
+			'					<a class="gsma_full_specs_link" href="home/mobile">Go to before you buy mobiles &raquo;' +
 			'					</a>' +
 			'				</div>' +
             '			</div>' +
@@ -389,6 +389,7 @@ function setResultsList(_list) {
 			function makeURL(p) {
 				var s = cleanURL(makers["" + p[MAKERID]]);
 				s += "&name=" + cleanURL(p[NAME]);
+				s += "&id=" + p[PHONEID];
 				return s;
 			}
 			

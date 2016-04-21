@@ -186,7 +186,7 @@ var widgetHTML = '' +
             '					<td class="searchInput">' +
             '						<img src="http://st.gsmarena.com/vv/webmasters/search-widget/search-icon.gif" class="gsma_search_icon" alt="" />' +
             '						<input type="hidden" value="yes" name="gsma_sQuickSearch" id="gsma_sQuickSearch" />' +
-            '						<input type="search" name="gsma_sSearch" placeholder="Phone search" results="5" id="gsma_searchfield" class="boxsizingBorder" autocomplete="off" />' +
+            '						<input type="search" name="gsma_sSearch" placeholder="Search..." results="5" id="gsma_searchfield" class="boxsizingBorder" autocomplete="off" />' +
             '					</td>' +
             '				</tr>' +
             '			</table>' +

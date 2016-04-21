@@ -9,7 +9,7 @@
            	 if (!isset($_SESSION['role']))
     		{
            		$_SESSION['role'] = 'visitor';
-                redirect('home/visitor');
+                redirect('home/bub');
             }
     	}
 
@@ -26,37 +26,19 @@
             }
             else
             {
-            	redirect('home/visitor');
+            	redirect('home/bub');
             }
         }
 
-        public function member($page = 'member')
-        {
-            $data['page_title'] = "Before You Buy";
-
-            $this->load->view('header', $data);
-			$this->load->view('member', $data);
-            $this->load->view('footer');
-        }
-
-        public function home_page($page = 'home_page')
+        public function bub($page = 'bub')
         {
             $data['page_title'] = "Before You Buy";
 
 
             $this->load->view('header', $data);
-            $this->load->view('home_page', $data);
+            $this->load->view('bub', $data);
             $this->load->view('footer');
 
-        }
-
-        public function visitor($page = 'visitor')
-        {
-            $data['page_title'] = "Before You Buy";
-
-            $this->load->view('header', $data);
-            $this->load->view('visitor', $data);
-            $this->load->view('footer');
         }
 
         public function mobile($page = 'mobile')

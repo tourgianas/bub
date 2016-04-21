@@ -94,9 +94,9 @@
 			            {
 			            	foreach ($query->result() as $stuff) {
 			            		if (strpos($manufacturer, $stuff->Manufacturer)) {
-			            			echo "<input type='checkbox' id='".$stuff->Manufacturer."' checked/>";
+			            			echo "<input type='checkbox' id='".$stuff->Manufacturer."' checked disabled/>";
 			            		}else{
-					      			echo "<input type='checkbox' id='".$stuff->Manufacturer."' />";
+					      			echo "<input type='checkbox' id='".$stuff->Manufacturer."' disabled/>";
 					      		}
 			            		echo "<label for='".$stuff->Manufacturer."'><a href='mobile?ch=1&temp=".$stuff->Manufacturer."'>".$stuff->Manufacturer."</a></label>";
 			            	}
@@ -118,9 +118,9 @@
 			            {
 			            	foreach ($query->result() as $stuff) {
 			            		if (strpos($ram, $stuff->Ram)) {
-			            			echo "<input type='checkbox' id='".$stuff->Ram."' checked/>";
+			            			echo "<input type='checkbox' id='".$stuff->Ram."' checked disabled/>";
 			            		}else{
-					      			echo "<input type='checkbox' id='".$stuff->Ram."' />";
+					      			echo "<input type='checkbox' id='".$stuff->Ram."' disabled/>";
 					      		}
 			            		echo "<label for='".$stuff->Ram."'><a href='mobile?ch=2&temp=".$stuff->Ram."'>".$stuff->Ram."</a></label>";
 			            	}
@@ -143,9 +143,9 @@
 			            {
 			            	foreach ($query->result() as $stuff) {
 			            		if (strpos($cpu, $stuff->CPU_type)) {
-			            			echo "<input type='checkbox' id='".$stuff->CPU_type."' checked/>";
+			            			echo "<input type='checkbox' id='".$stuff->CPU_type."' checked disabled/>";
 			            		}else{
-					      			echo "<input type='checkbox' id='".$stuff->CPU_type."' />";
+					      			echo "<input type='checkbox' id='".$stuff->CPU_type."' disabled/>";
 					      		}
 			            		echo "<label for='".$stuff->CPU_type."'><a href='mobile?ch=3&temp=".$stuff->CPU_type."'>".$stuff->CPU_type."</a></label>";
 			            	}
@@ -169,9 +169,9 @@
 			            {
 			            	foreach ($query->result() as $stuff) {
 			            		if (strpos($screen_size, $stuff->Screen_Size)) {
-			            			echo "<input type='checkbox' id='".$stuff->Screen_Size."' checked/>";
+			            			echo "<input type='checkbox' id='".$stuff->Screen_Size."' checked disabled/>";
 			            		}else{
-					      			echo "<input type='checkbox' id='".$stuff->Screen_Size."' />";
+					      			echo "<input type='checkbox' id='".$stuff->Screen_Size."' disabled/>";
 					      		}
 			            		echo "<label for='".$stuff->Screen_Size."'><a href='mobile?ch=4&temp=".$stuff->Screen_Size."'>".$stuff->Screen_Size."</a></label>";
 			            	}
@@ -195,9 +195,9 @@
 			            {
 			            	foreach ($query->result() as $stuff) {
 			            		if (strpos($internal_memory, $stuff->Internal_Memory)) {
-			            			echo "<input type='checkbox' id='".$stuff->Internal_Memory."' checked/>";
+			            			echo "<input type='checkbox' id='".$stuff->Internal_Memory."' checked disabled/>";
 			            		}else{
-					      			echo "<input type='checkbox' id='".$stuff->Internal_Memory."' />";
+					      			echo "<input type='checkbox' id='".$stuff->Internal_Memory."' disabled/>";
 					      		}
 			            		echo "<label for='".$stuff->Internal_Memory."'><a href='mobile?ch=5&temp=".$stuff->Internal_Memory."'>".$stuff->Internal_Memory."</a></label>";
 			            	}
@@ -221,9 +221,9 @@
 			            {
 			            	foreach ($query->result() as $stuff) {
 			            		if (strpos($camera, $stuff->Camera)) {
-			            			echo "<input type='checkbox' id='".$stuff->Camera."' checked/>";
+			            			echo "<input type='checkbox' id='".$stuff->Camera."' checked disabled/>";
 			            		}else{
-					      			echo "<input type='checkbox' id='".$stuff->Camera."' />";
+					      			echo "<input type='checkbox' id='".$stuff->Camera."' disabled/>";
 					      		}
 			            		echo "<label for='".$stuff->Camera."'><a href='mobile?ch=6&temp=".$stuff->Camera."'>".$stuff->Camera."</a></label>";
 			            	}
